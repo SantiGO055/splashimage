@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Image } from '../model/image';
 
 
 @Injectable({
@@ -18,8 +19,14 @@ export class FirebaseService {
   }
 
   getImageFromDatabase() {
-    return this.db.list('images').valueChanges()
+    return this.db.list('images').valueChanges();
   }
+
+  insertImage(data: Image) {
+
+    return this.db.list('images').push(data);
+  }
+
   public referenciaCloudStorage(nombreArchivo: string) {
     return this.storage.ref(nombreArchivo);
   }
