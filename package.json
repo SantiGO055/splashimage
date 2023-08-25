@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "npm run config -- --environment=dev &&  ng serve",
+    "build": "npm run config -- --environment=prod && ng build",
+    "config": "ts-node ./src/assets/scripts/setEnv.ts",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -25,7 +26,8 @@
     "bootstrap": "^5.3.1",
     "firebase": "^9.19.1",
     "jquery": "^3.6.4",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.0",
