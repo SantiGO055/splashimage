@@ -1,3 +1,10 @@
 <p>main works!</p>
-<button (click)="get()">get</button>
-<button (click)="insert()">insert</button>
+<button class="btn btn-primary" (click)="get()">get</button>
+<button class="btn btn-info" (click)="insert()">insert</button>
+
+<div class="formGroup">
+
+    <button type="button" class="btn btn-warning" (click)="authService.SignOut()">
+        Sign out
+    </button>
+</div>

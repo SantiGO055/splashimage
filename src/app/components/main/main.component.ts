@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Image } from 'src/app/model/image';
+import { AuthService } from 'src/app/services/auth.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class MainComponent {
 
-  constructor(private fire: FirebaseService) {
+  constructor(private fire: FirebaseService, public authService: AuthService) {
 
   }
 

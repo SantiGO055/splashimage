@@ -6,11 +6,15 @@ import { MainComponent } from './components/main/main.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +22,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     // AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    RouterModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

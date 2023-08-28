@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Image } from '../model/image';
-
+import { User } from '../model/user';
+import { FirebaseOperation } from '@angular/fire/compat/database/interfaces';
+import { set } from "firebase/database";
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,20 @@ export class FirebaseService {
 
   public referenciaCloudStorage(nombreArchivo: string) {
     return this.storage.ref(nombreArchivo);
+  }
+
+  SetUserData(user: any) {
+    const userRef = this.db.object(
+      `users/${user.uid}`
+    );
+    const userData: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL
+    };
+
+    return userRef.set(userData)
   }
 
 }
