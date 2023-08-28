@@ -1,22 +1,32 @@
-<div class="displayTable">
+<!-- <div class="displayTable">
     <div class="displayTableCell">
         <div class="authBlock">
             <h3>Sign In with Google</h3>
 
-            <!-- Calling SignIn Api from AuthService -->
             <div class="formGroup">
                 <input type="button" class="btn btn-primary" value="Log in" (click)="SignIn()" />
             </div>
-            <!-- <div class="formGroup">
+            <div class="formGroup">
                 <span class="or"><span class="orInner">Or</span></span>
             </div>
             <div class="forgotPassword">
                 <span routerLink="/forgot-password">Forgot Password?</span>
-            </div> -->
+            </div>
         </div>
         <div class="redirectToLogin">
             <span>Don't have an account?<span class="redirect" routerLink="/register-user">
                     Sign Up</span></span>
         </div>
     </div>
+</div> -->
+
+<div class="loginContainer">
+    <h2>Click to sign in with Google</h2>
+    <div id="login-button">
+        <img (click)="SignIn()"
+            src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png" />
+
+
+    </div>
+
 </div>
