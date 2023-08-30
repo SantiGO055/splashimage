@@ -1,10 +1,34 @@
-<p>main works!</p>
-<button class="btn btn-primary" (click)="get()">get</button>
-<button class="btn btn-info" (click)="insert()">insert</button>
-
-<div class="formGroup">
-
+<div class="user">
     <button type="button" class="btn btn-warning" (click)="authService.SignOut()">
         Sign out
     </button>
+    <div *ngIf="authService.userData">
+        <img [src]="authService.userData.photoURL" />
+
+    </div>
+
 </div>
+
+<div class="containerAddSearch">
+
+
+
+    <input type="text" class="form-control searchInput" placeholder="Search by name">
+
+
+    <div class="formGroup">
+
+        <button class="btn btn-success" (click)="addPhoto()">
+            Add photo
+        </button>
+    </div>
+</div>
+<div>
+
+</div>
+
+<div *ngFor="let image of listImages">
+    <img [src]="image.url">
+</div>
+<!-- <button class="btn btn-primary" (click)="get()">get</button>
+<button class="btn btn-info" (click)="insert()">insert</button> -->

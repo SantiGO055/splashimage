@@ -1,6 +1,6 @@
 export interface Image {
     id?: string;
-    name: string;
     label: string;
+    url: string;
     password?: string;
 }

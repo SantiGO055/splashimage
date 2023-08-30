@@ -9,6 +9,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFireStorageModule,
     AngularFireAuthModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

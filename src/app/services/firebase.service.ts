@@ -5,6 +5,7 @@ import { Image } from '../model/image';
 import { User } from '../model/user';
 import { FirebaseOperation } from '@angular/fire/compat/database/interfaces';
 import { set } from "firebase/database";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,10 @@ export class FirebaseService {
     // prueba.valueChanges().subscribe(val => console.log(val))
   }
 
-  getImageFromDatabase() {
-    return this.db.list('images').valueChanges();
+  getImageFromDatabase(): Observable<Image[]> {
+    const images = this.db.list<Image>('images').valueChanges();
+
+    return images;
   }
 
   insertImage(data: Image) {
