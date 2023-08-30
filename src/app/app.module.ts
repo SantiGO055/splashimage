@@ -10,12 +10,15 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    SignInComponent
+    SignInComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
     AngularFireAuthModule,
     RouterModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,8 @@
 
 
 
-        <input type="text" class="form-control searchInput" placeholder="Search by name">
+        <input type="text" class="form-control searchInput" autocomplete="off" [(ngModel)]="searchText"
+            placeholder="Search by name">
 
 
         <div class="formGroup">
@@ -26,7 +27,7 @@
 
     <div class="containerImagenes">
 
-        <img *ngFor="let image of listImages" class="image" [src]="image.url">
+        <img *ngFor="let image of listImages | searchFilter:searchText" class="image" [src]="image.url ">
 
     </div>
     <!-- <button class="btn btn-primary" (click)="get()">get</button>

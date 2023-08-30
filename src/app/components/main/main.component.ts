@@ -13,6 +13,7 @@ export class MainComponent {
 
   label: string = "";
   url: string = "";
+  searchText: string = ""
   listImages: Image[] = []
   constructor(private firebase: FirebaseService, public authService: AuthService) {
     this.firebase.getImageFromDatabase().subscribe((list: Image[]) => {
