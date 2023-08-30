@@ -8,29 +8,27 @@
     </div>
 
 </div>
-
-<div class="containerAddSearch">
-
-
-
-    <input type="text" class="form-control searchInput" placeholder="Search by name">
+<div class="generalDiv">
+    <div class="containerAddSearch">
 
 
-    <div class="formGroup">
 
-        <button class="btn btn-success" (click)="addPhoto()">
-            Add photo
-        </button>
+        <input type="text" class="form-control searchInput" placeholder="Search by name">
+
+
+        <div class="formGroup">
+
+            <button class="btn btn-success" (click)="addPhoto()">
+                Add photo
+            </button>
+        </div>
     </div>
-</div>
-<div>
 
-</div>
+    <div class="containerImagenes">
 
-<div class="containerImagenes">
+        <img *ngFor="let image of listImages" class="image" [src]="image.url">
 
-    <img *ngFor="let image of listImages" class="image" [src]="image.url">
-
-</div>
-<!-- <button class="btn btn-primary" (click)="get()">get</button>
+    </div>
+    <!-- <button class="btn btn-primary" (click)="get()">get</button>
 <button class="btn btn-info" (click)="insert()">insert</button> -->
+</div>

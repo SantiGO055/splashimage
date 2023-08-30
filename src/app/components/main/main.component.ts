@@ -35,7 +35,7 @@ export class MainComponent {
       showConfirmButton: true,
       confirmButtonText: "Submit",
       confirmButtonColor: "green",
-      cancelButtonColor: "white",
+
 
       preConfirm: () => {
         console.log()

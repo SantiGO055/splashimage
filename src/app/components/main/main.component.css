@@ -26,6 +26,7 @@ button {
 }
 
 .searchInput {
+
     background-image: url('/assets/search.svg');
     background-repeat: no-repeat;
     background-position: 2%;
@@ -36,6 +37,7 @@ input {
 }
 
 .containerImagenes {
+    margin-top: 50px;
     display: flex;
     justify-content: space-around;
     flex-flow: row wrap;
@@ -43,9 +45,12 @@ input {
 
 }
 
+.generalDiv {
+    margin: 99px;
+}
 
 .image {
-    border-radius: 24%;
+    border-radius: 20%;
     max-width: 400px;
     min-width: auto;
     /* flex-grow: 2; */
