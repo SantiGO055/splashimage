@@ -20,7 +20,7 @@ button {
     border-radius: 12px;
 }
 
-img {
+.perfil {
     border-radius: 50%;
     width: 50px;
 }
@@ -33,4 +33,21 @@ img {
 
 input {
     padding-left: 5%;
+}
+
+.containerImagenes {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+
+
+}
+
+
+.image {
+    border-radius: 24%;
+    max-width: 400px;
+    min-width: auto;
+    /* flex-grow: 2; */
+    flex-shrink: 0
 }

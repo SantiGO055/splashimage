@@ -3,7 +3,7 @@
         Sign out
     </button>
     <div *ngIf="authService.userData">
-        <img [src]="authService.userData.photoURL" />
+        <img class="perfil" [src]="authService.userData.photoURL" />
 
     </div>
 
@@ -27,8 +27,10 @@
 
 </div>
 
-<div *ngFor="let image of listImages">
-    <img [src]="image.url">
+<div class="containerImagenes">
+
+    <img *ngFor="let image of listImages" class="image" [src]="image.url">
+
 </div>
 <!-- <button class="btn btn-primary" (click)="get()">get</button>
 <button class="btn btn-info" (click)="insert()">insert</button> -->
