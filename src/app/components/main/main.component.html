@@ -27,7 +27,7 @@
 
     <div class="containerImagenes">
 
-        <img *ngFor="let image of listImages | searchFilter:searchText" class="image" [src]="image.url ">
+        <img *ngFor="let image of listImages | searchFilter:searchText" class="image" [src]="validateUrl(image.url)">
 
     </div>
     <!-- <button class="btn btn-primary" (click)="get()">get</button>

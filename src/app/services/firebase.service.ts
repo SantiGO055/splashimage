@@ -4,7 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Image } from '../model/image';
 import { User } from '../model/user';
 import { FirebaseOperation } from '@angular/fire/compat/database/interfaces';
-import { set } from "firebase/database";
+import { orderByChild } from "firebase/database";
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -24,12 +24,13 @@ export class FirebaseService {
   getImageFromDatabase(): Observable<Image[]> {
     const images = this.db.list<Image>('images').valueChanges();
 
+    // console.log(orderByChild('images'))
     return images;
   }
 
-  insertImage(data: Image) {
+  InsertImage(data: Image) {
 
-    return this.db.list('images').push(data);
+    return this.db.list('images').push(data).then(snap => this.db.object('images/' + snap.key).update({ id: snap.key }));
   }
 
   public referenciaCloudStorage(nombreArchivo: string) {

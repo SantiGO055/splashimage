@@ -1,6 +1,7 @@
 export interface Image {
-    id?: string;
+    key?: string;
     label: string;
     url: string;
     password?: string;
+    datetime: string;
 }

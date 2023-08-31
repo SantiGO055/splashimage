@@ -15,11 +15,15 @@ export class MainComponent {
   url: string = "";
   searchText: string = ""
   listImages: Image[] = []
+  imageNotFound = "assets/imagenotfound.jpg"
   constructor(private firebase: FirebaseService, public authService: AuthService) {
     this.firebase.getImageFromDatabase().subscribe((list: Image[]) => {
-      this.listImages = list;
-      console.log(this.listImages)
+      this.listImages = list.sort((a: Image, b: Image) => {
+        return a.datetime > b.datetime ? -1 : 1;
+      });
+
     })
+
   }
 
   async addPhoto() {
@@ -51,11 +55,12 @@ export class MainComponent {
 
       this.label = val.value[0];
       this.url = val.value[1];
-      let data: Image = { label: this.label, url: this.url }
-      this.firebase.insertImage(data)
+      let data: Image = { label: this.label, url: this.url, datetime: new Date().toTimeString() }
+      this.firebase.InsertImage(data)
     })
 
-
+    const now = new Date();
+    console.log(now.toTimeString())
 
     // Swal.fire("Add a new photo", html, "info").then((r) => {
     //   console.log(Swal.getInput())
@@ -63,14 +68,16 @@ export class MainComponent {
     // })
     // Swal.clickConfirm()
   }
-  get() {
-    this.firebase.getImageFromDatabase().subscribe(a => console.log(a))
-  }
-  insert() {
-    let data: Image = { label: 'asd', url: 'asdasdasd' };
 
-    this.firebase.insertImage(data);
+  validateUrl(url: string) {
+    let valid = /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(url);
 
+    if (valid)
+      return url;
+    else
+      return 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';// or "link/to/image1.png"
   }
+
+
 
 }
